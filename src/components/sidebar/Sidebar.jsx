@@ -1,73 +1,12 @@
-import { useState } from "react";
-import Avatar from "../../assets/images/avatar.jpg";
-import Search from "../../assets/images/icons/search.png";
-import Home from "../../assets/images/icons/home.png";
-import TvShows from "../../assets/images/icons/tv-shows.png";
-import Movies from "../../assets/images/icons/movies.png";
-import Genres from "../../assets/images/icons/genres.png";
-import WatchLater from "../../assets/images/icons/watch-later.png";
+import useSidebar from "./useSidebar";
 
 import "./styles.scss";
 
 function Sidebar() {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const menuItems = [
-		{
-			key: "search",
-			title: "Search",
-			iconSrc: Search,
-			isActive: false,
-		},
-		{
-			key: "home",
-			title: "Home",
-			iconSrc: Home,
-			isActive: true,
-		},
-		{
-			key: "tvShows",
-			title: "TV Shows",
-			iconSrc: TvShows,
-			isActive: false,
-		},
-		{
-			key: "movies",
-			title: "Movies",
-			iconSrc: Movies,
-			isActive: false,
-		},
-		{
-			key: "genres",
-			title: "Genres",
-			iconSrc: Genres,
-			isActive: false,
-		},
-		{
-			key: "watchLater",
-			title: "Watch Later",
-			iconSrc: WatchLater,
-			isActive: false,
-		},
-	];
-
-	const bottomMenuItems = [
-		{
-			key: "language",
-			title: "Language",
-		},
-		{
-			key: "getHelp",
-			title: "Get Help",
-		},
-		{
-			key: "exit",
-			title: "Exit",
-		},
-	];
+	const { isOpen, setIsOpen, menuItems, bottomMenuItems } = useSidebar();
 
 	return (
-		<div className={`sidebar-container ${isOpen ? "opened" : "closed"}`}>
+		<div className={`sidebar-container ${isOpen ? "opened" : ""}`}>
 			<div
 				className="sidebar"
 				onMouseOver={() => setIsOpen(true)}
@@ -77,7 +16,7 @@ function Sidebar() {
 					<div className="sidebar-user d_flex a_items_center">
 						<div className="sidebar-user__avatar">
 							<img
-								src={Avatar}
+								src="/assets/avatar.jpg"
 								alt="avatar"
 							/>
 						</div>

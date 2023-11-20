@@ -1,5 +1,5 @@
-@import "../../assets/styles/mixins.scss";
-@import "../../assets/styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .sidebar-container {
 	position: fixed;
@@ -9,17 +9,23 @@
 		rgba(4, 4, 4, 0.98) 21%,
 		rgba(4, 4, 4, 0) 100%
 	);
-    height: 100%;
+	height: 100%;
+	width: 130px;
+	transition: width 200ms;
+	z-index: 1;
 
 	.sidebar {
 		height: 100%;
-		padding: 60px 12px;
+		padding: 60px 24px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		max-width: 330px;
 
 		&-user {
-			margin-bottom: 32px;
+			margin-bottom: 18px;
+			opacity: 0;
+			transition: opacity 200ms ease-in-out;
 
 			&__avatar {
 				@include wh(82px, 82px);
@@ -46,10 +52,12 @@
 
 		&-menu {
 			&__item {
-				border-radius: 12px;
-				padding: 18px 0 18px 24px;
+				height: 82px;
+				padding: 14px 0 14px 24px;
 				margin: 12px 0;
 				cursor: pointer;
+				border-radius: 41px;
+				transition: border-radius 200ms;
 
 				&--icon {
 					flex: 0 0 30px;
@@ -62,7 +70,9 @@
 				}
 
 				&--title {
-					margin-left: 50px;
+					margin-left: 32px;
+					opacity: 0;
+					transition: opacity 200ms ease-in-out;
 
 					span {
 						@include font(36px, 400);
@@ -73,12 +83,15 @@
 					}
 				}
 
-				&.isActive {
+				&.isActive,
+				&:hover {
 					background-color: $activeColor;
 				}
 			}
 
 			&__bottom {
+				opacity: 0;
+				transition: opacity 200ms ease-in-out;
 				padding-left: 24px;
 
 				&--item {
@@ -100,49 +113,33 @@
 				}
 			}
 		}
-
-		// .sidebar-user,
-		.sidebar-menu__item--title,
-		.sidebar-menu__bottom {
-			transition: 0.5s;
-		}
-	}
-
-	&.closed {
-		width: 160px;
-
-		.sidebar-user,
-		.sidebar-menu__item--title,
-		.sidebar-menu__bottom {
-			opacity: 0;
-			visibility: hidden;
-		}
-
-		.sidebar-menu__item {
-			position: relative;
-			@include wh(72px, 72px);
-			border-radius: 50%;
-
-			&--icon {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
-		}
 	}
 
 	&.opened {
 		width: 100%;
 
 		.sidebar {
-			width: 320px;
-
-			.sidebar-user,
-			.sidebar-menu__item--title,
-			.sidebar-menu__bottom {
+			&-user {
 				opacity: 1;
-				visibility: visible;
+			}
+
+			&-menu .sidebar-menu__item {
+				border-radius: 12px;
+
+				@for $i from 1 through 6 {
+					&:nth-of-type(#{$i}) {
+						.sidebar-menu__item--title {
+							transition-delay: 100ms * $i;
+						}
+					}
+				}
+				&--title {
+					opacity: 1;
+				}
+			}
+
+			&-menu__bottom {
+				opacity: 1;
 			}
 		}
 	}
