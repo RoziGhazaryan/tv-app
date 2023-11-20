@@ -1,0 +1,21 @@
+@import "../../assets/styles/mixins.scss";
+@import "../../assets/styles/variables.scss";
+
+.sidebar-menu {
+    &_item {
+        &--icon {
+            @include wh(30px, 30px);
+
+            &__image {
+                object-fit: contain;
+                @include wh100;
+            }
+        }
+
+        &--title {
+            @include font(36px, 400);
+            color: white;
+            font-weight: 400;
+        }
+    }
+}
