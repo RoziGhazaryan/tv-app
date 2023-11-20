@@ -1,6 +1,8 @@
 @import "../../assets/styles/variables.scss";
 
 .home-page {
+    color: $staticTextColor;
     background-color: $staticBgColor;
-    height: 100vh;
+    height: 100%;
+    display: flex;
 }

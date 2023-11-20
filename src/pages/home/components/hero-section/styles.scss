@@ -1,0 +1,95 @@
+@import "../../../../assets/styles/mixins.scss";
+@import "../../../../assets/styles/variables.scss";
+
+.hero-section {
+	width: calc(100% - 80px);
+	height: 802px;
+	background-image: url("../../../../assets/images/FeaturedCoverImage.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding-left: 160px;
+
+	&__main-content {
+		display: flex;
+		align-items: center;
+		height: 100%;
+
+		&__container {
+			width: 770px;
+		}
+
+		&--show {
+			&-type {
+				@include font(32px, 500);
+				letter-spacing: 4.8px;
+				color: $staticSecondTextColor;
+				text-transform: uppercase;
+			}
+
+			&-info {
+				margin: 12px 0;
+
+				span {
+					@include font(32px, 400);
+					color: $staticTextColor;
+
+					& + span {
+						padding-left: 8px;
+					}
+				}
+			}
+
+			&-description {
+				@include font(32px, 400);
+				color: $staticTextColor;
+			}
+
+			&-buttons {
+				margin-top: 32px;
+
+				&--button {
+					@include wh(240px, 72px);
+					border-radius: 40px;
+					transition: 0.5s;
+
+					span {
+						@include font(32px, 600);
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+
+					&.play {
+						background-color: $playButtonBgColor;
+
+						span {
+							.arrow {
+								width: 0;
+								height: 0;
+								border-top: 12px solid transparent;
+								border-bottom: 12px solid transparent;
+								border-left: 20px solid #040404;
+								margin-right: 8px;
+							}
+						}
+					}
+
+					&.more-info {
+						background-size: 200% auto;
+						background-image: linear-gradient(to right, #2727f5, #001671);
+						margin-left: 18px;
+
+						&:hover {
+							background-position: right center;
+						}
+
+						span {
+							color: $staticTextColor;
+						}
+					}
+				}
+			}
+		}
+	}
+}
