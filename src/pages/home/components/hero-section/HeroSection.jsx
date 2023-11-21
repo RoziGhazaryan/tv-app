@@ -1,15 +1,10 @@
 import useHeroSection from "./useHeroSection";
-import { useEffect, useRef } from "react";
 
 import "./styles.scss";
+import "./responsive.scss";
 
 function HeroSection({ data }) {
-	const { duration } = useHeroSection({ data });
-	const videoRef = useRef();
-
-	useEffect(() => {
-		videoRef.current?.load();
-	}, [data?.VideoUrl]);
+	const { videoRef, duration } = useHeroSection({ data });
 
 	return (
 		<div

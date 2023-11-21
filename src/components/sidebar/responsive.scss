@@ -1,0 +1,42 @@
+@import "../../styles/mixins.scss";
+
+@media (max-width: 1499.98px) {
+	.sidebar-container {
+		.sidebar {
+			padding: 40px 24px;
+			max-width: 300px;
+
+			&-user {
+				&__avatar {
+					@include wh(60px, 60px);
+				}
+			}
+
+			&-menu {
+				&__item {
+					height: 56px;
+
+					&--title {
+						margin-left: 24px;
+
+						span {
+							@include font(24px, 400);
+							height: 20px;
+						}
+					}
+				}
+
+				&__bottom {
+					&--item {
+						&_title {
+							span {
+								@include font(18px, 600);
+								height: 18px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

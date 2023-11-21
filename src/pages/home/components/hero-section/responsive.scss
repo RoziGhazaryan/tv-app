@@ -1,0 +1,33 @@
+@import "../../../../styles/mixins.scss";
+@import "../../../../styles/variables.scss";
+
+@media (max-width: 1499.98px) {
+	.hero-section {
+		height: 500px;
+
+		&__main-content {
+			&__container {
+				width: 770px;
+				z-index: 1;
+			}
+
+			&--show {
+				&-image {
+					width: 550px;
+				}
+
+				&-buttons {
+					margin-top: 28px;
+
+					&--button {
+						@include wh(200px, 64px);
+
+						span {
+							@include font(28px, 600);
+						}
+					}
+				}
+			}
+		}
+	}
+}

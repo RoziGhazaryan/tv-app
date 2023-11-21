@@ -1,4 +1,15 @@
+import { useEffect, useRef } from "react";
+
 const useHeroSection = ({ data }) => {
+	// useRef
+	const videoRef = useRef();
+
+	// useEffect
+	useEffect(() => {
+		videoRef.current?.load();
+	}, [data?.VideoUrl]);
+
+	// functions
 	const toHoursAndMinutes = (totalSeconds) => {
 		const totalMinutes = Math.floor(totalSeconds / 60);
 
@@ -10,7 +21,7 @@ const useHeroSection = ({ data }) => {
 
 	const duration = toHoursAndMinutes(data?.Duration) ?? "-";
 
-	return { duration };
+	return { videoRef, duration };
 };
 
 export default useHeroSection;

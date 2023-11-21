@@ -1,6 +1,7 @@
 import useSidebar from "./useSidebar";
 
 import "./styles.scss";
+import "./responsive.scss";
 
 function Sidebar() {
 	const { isOpen, setIsOpen, menuItems, bottomMenuItems } = useSidebar();
