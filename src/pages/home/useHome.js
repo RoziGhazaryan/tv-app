@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 
 const useHome = () => {
 	// useState
-	const [data, setData] = useState(null);
+	const [trendingData, setTrendingData] = useState(null);
+	const [featured, setFeatured] = useState(null);
+	const [selectedItem, setSelectedItem] = useState(null);
 
 	// functions
 	const getData = () => {
@@ -16,8 +18,40 @@ const useHome = () => {
 				return response.json();
 			})
 			.then((data) => {
-				setData(data);
+				if (data.TrendingNow?.length && data.Featured) {
+					if (data.TrendingNow.length > 50) {
+						data.TrendingNow.length = 50;
+					}
+					sortItems(data.TrendingNow, data.Featured);
+				}
 			});
+	};
+
+	const sortItems = (trendingNow, featuredItem) => {
+		const trendingIds = sessionStorage.getItem("trending");
+		const trendingNowFetchedData = [...trendingNow];
+
+		if (trendingIds) {
+			const trendingIdsArr = JSON.parse(trendingIds);
+
+			for (let i = trendingIdsArr.length - 1; i >= 0; i--) {
+				const eachItem = trendingNowFetchedData.find(
+					(item) => trendingIdsArr[i] === item.Id
+				);
+				const index = trendingNowFetchedData.indexOf(eachItem);
+
+				if (eachItem && index !== -1) {
+					trendingNowFetchedData.splice(index, 1);
+					trendingNowFetchedData.unshift(eachItem);
+				}
+			}
+
+			setTrendingData(trendingNowFetchedData);
+			setFeatured(trendingNowFetchedData[0]);
+		} else {
+			setTrendingData(trendingNow);
+			setFeatured(featuredItem);
+		}
 	};
 
 	// useEffect
@@ -25,7 +59,7 @@ const useHome = () => {
 		getData();
 	}, []);
 
-	return { data };
+	return { trendingData, featured, selectedItem, setSelectedItem };
 };
 
 export default useHome;

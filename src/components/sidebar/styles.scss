@@ -12,7 +12,7 @@
 	height: 100%;
 	width: 130px;
 	transition: width 200ms;
-	z-index: 1;
+	z-index: 2;
 
 	.sidebar {
 		height: 100%;
@@ -72,6 +72,7 @@
 				&--title {
 					margin-left: 32px;
 					opacity: 0;
+					text-indent: -10em;
 					transition: opacity 200ms ease-in-out;
 
 					span {
@@ -90,6 +91,7 @@
 			}
 
 			&__bottom {
+				text-indent: -10em;
 				opacity: 0;
 				transition: opacity 200ms ease-in-out;
 				padding-left: 24px;
@@ -133,13 +135,16 @@
 						}
 					}
 				}
+
 				&--title {
 					opacity: 1;
+					text-indent: 0;
 				}
 			}
 
 			&-menu__bottom {
 				opacity: 1;
+				text-indent: 0;
 			}
 		}
 	}

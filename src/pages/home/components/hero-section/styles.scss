@@ -12,9 +12,20 @@
 		display: flex;
 		align-items: center;
 		height: 100%;
+		position: relative;
+		padding-left: 24px;
 
 		&__container {
 			width: 770px;
+			z-index: 1;
+		}
+
+		&--video {
+			@include wh100;
+			position: absolute;
+			object-fit: cover;
+			top: 0;
+			left: 0;
 		}
 
 		&--show {
@@ -76,7 +87,7 @@
 					&.more-info {
 						background-image: linear-gradient(128deg, #2727f5 0%, #001671 100%);
 						margin-left: 18px;
-						
+
 						span {
 							color: $staticTextColor;
 						}

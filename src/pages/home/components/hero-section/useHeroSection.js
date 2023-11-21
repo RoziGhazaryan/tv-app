@@ -5,7 +5,7 @@ const useHeroSection = ({ data }) => {
 		const hours = Math.floor(totalMinutes / 60);
 		const minutes = totalMinutes % 60;
 
-		return `${hours}h ${minutes}m`;
+		return hours ? `${hours}h ${minutes}m` : `${minutes}m`;
 	};
 
 	const duration = toHoursAndMinutes(data?.Duration) ?? "-";
